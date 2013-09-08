@@ -1,7 +1,9 @@
 package org.xiaoxiancai.imhere.activity;
 
 import android.app.ListActivity;
+import android.database.Cursor;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -21,6 +23,9 @@ public class ListViewTestActivity extends ListActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_listview_test_1);
+
+		Cursor cursor = getContentResolver().query(
+				ContactsContract.Contacts.CONTENT_URI, null, null, null, null);
 		// setListAdapter(new ArrayAdapter<String>(this,
 		// android.R.layout.simple_list_item_1, items));
 

@@ -37,12 +37,12 @@ public final class R {
         public static final int venice_9=0x7f02000a;
     }
     public static final class id {
-        public static final int action_settings=0x7f090015;
-        public static final int btnCustomToast=0x7f090013;
-        public static final int btnRunToastFromOtherThread=0x7f090014;
-        public static final int btnSimpleToast=0x7f090010;
-        public static final int btnSimpleToastWithCustomPosition=0x7f090011;
-        public static final int btnSimpleToastWithImage=0x7f090012;
+        public static final int action_settings=0x7f090018;
+        public static final int btnCustomToast=0x7f090016;
+        public static final int btnRunToastFromOtherThread=0x7f090017;
+        public static final int btnSimpleToast=0x7f090013;
+        public static final int btnSimpleToastWithCustomPosition=0x7f090014;
+        public static final int btnSimpleToastWithImage=0x7f090015;
         public static final int button=0x7f09000a;
         public static final int cancel=0x7f09000d;
         public static final int circleProgressBar=0x7f090009;
@@ -50,15 +50,18 @@ public final class R {
         public static final int entry=0x7f09000c;
         public static final int grid=0x7f090003;
         public static final int gridview=0x7f090004;
+        public static final int img=0x7f09000e;
+        public static final int info=0x7f090010;
         public static final int input=0x7f090000;
         public static final int label=0x7f09000b;
         public static final int mapView=0x7f090007;
         public static final int ok=0x7f090005;
         public static final int rectangleProgressBar=0x7f090008;
         public static final int rowtv1=0x7f090006;
-        public static final int spinner=0x7f09000f;
-        public static final int spinner_label=0x7f09000e;
+        public static final int spinner=0x7f090012;
+        public static final int spinner_label=0x7f090011;
         public static final int textView=0x7f090002;
+        public static final int title=0x7f09000f;
     }
     public static final class layout {
         public static final int activity_autocompletetextview_test=0x7f030000;
@@ -70,9 +73,10 @@ public final class R {
         public static final int activity_main=0x7f030006;
         public static final int activity_progressbar_test=0x7f030007;
         public static final int activity_relativelayout_test=0x7f030008;
-        public static final int activity_spinner_test=0x7f030009;
-        public static final int activity_tablelayout_test=0x7f03000a;
-        public static final int activity_toast_test=0x7f03000b;
+        public static final int activity_simple_adapter_test=0x7f030009;
+        public static final int activity_spinner_test=0x7f03000a;
+        public static final int activity_tablelayout_test=0x7f03000b;
+        public static final int activity_toast_test=0x7f03000c;
     }
     public static final class menu {
         public static final int main=0x7f080000;
