@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="5dip" >
+
+    <Button
+        android:id="@+id/btnSimpleToast"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="默认" >
+    </Button>
+
+    <Button
+        android:id="@+id/btnSimpleToastWithCustomPosition"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="自定义显示位置" >
+    </Button>
+
+    <Button
+        android:id="@+id/btnSimpleToastWithImage"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="带图片" >
+    </Button>
+
+    <Button
+        android:id="@+id/btnCustomToast"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="完全自定义" >
+    </Button>
+
+    <Button
+        android:id="@+id/btnRunToastFromOtherThread"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="其他线程" >
+    </Button>
+
+
+<!-- 
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/llToast"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="#ffffffff"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/tvTitleToast"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="1dip"
+        android:background="#bb000000"
+        android:gravity="center"
+        android:textColor="#ffffffff" />
+
+    <LinearLayout
+        android:id="@+id/llToastContent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="1dip"
+        android:layout_marginLeft="1dip"
+        android:layout_marginRight="1dip"
+        android:background="#44000000"
+        android:orientation="vertical"
+        android:padding="15dip" >
+
+        <ImageView
+            android:id="@+id/tvImageToast"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+
+        <TextView
+            android:id="@+id/tvTextToast"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingLeft="10dip"
+            android:paddingRight="10dip"
+            android:textColor="#ff000000" />
+    </LinearLayout>
+
+</LinearLayout>
+ --></LinearLayout>

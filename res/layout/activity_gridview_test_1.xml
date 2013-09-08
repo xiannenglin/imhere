@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="pic" >
+    </TextView>
+
+    <!-- grid元素之间的竖直间隔 -->
+    <!-- grid元素之间的水平间隔 -->
+    <!-- 表示有多少列，如果设置为auto_fit，将根据columnWidth和Spacing来自动计算 -->
+    <!-- 一般建议采用有像素密度无关的dip或者dp来表示 -->
+
+    <GridView
+        android:id="@+id/grid"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:columnWidth="100px"
+        android:gravity="center"
+        android:horizontalSpacing="5px"
+        android:numColumns="auto_fit"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="10px" />
+
+</LinearLayout>

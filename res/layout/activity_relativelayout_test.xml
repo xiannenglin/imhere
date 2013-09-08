@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 我们采用RelativeLayout的布局，并设置了pad的留边，需要注意pad属于widget的有效范围 -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="5px" >
+
+    <!-- textview是我们第一个基准widget，我们设置了android:paddingTop="15px"。 -->
+
+    <TextView
+        android:id="@+id/label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="15px"
+        android:text="URL:" />
+    <!-- 在label的右面有一edittext，填满余下的空间，并和label进行对齐 -->
+
+    <EditText
+        android:id="@+id/entry"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/label"
+        android:layout_toRightOf="@id/label" />
+    <!-- 在edittext的下面并对齐最右方有一个OK button -->
+
+    <Button
+        android:id="@+id/ok"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@id/entry"
+        android:layout_below="@id/entry"
+        android:text="OK" />
+    <!-- 在OK按键的左边增加一个Cancel button，并对齐。如果我们要求和OK的button之间增加间距，我们可以在下面增加设置android:laytou_marginRight="10px" -->
+
+    <Button
+        android:id="@+id/cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/ok"
+        android:layout_toLeftOf="@id/ok"
+        android:text="Cancel" />
+
+</RelativeLayout>

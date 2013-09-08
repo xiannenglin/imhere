@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:stretchColumns="1" 
+	android:shrinkColumns="4,5">
+    <!--
+         android:stretchColumns的值为一个column的列号，
+    	注意列号是从0还是，如果有多个列号，用逗号作为分割。
+    	这些列将尽可能填满剩余的空间，这对于小于有效空间的情况非常有用。
+    	如果不设置，则采用widget的natrual的大小，将不会填满横排剩余的空间。在程序中可以是setColumnStretchable() -->
+
+    <TableRow>
+
+        <TextView android:text="URL:" />
+        <!--
+            	 如果我们不设置 android:stretchColumns="1"，EditText这里是没有内容，
+       		因此它的natrual的width为0，即看不到。当我们设置row 1的两个button填入 column2和3，
+       		那么column 2和3将为适配为button的大小，而column1为1，这会导致如图所示的画面
+        -->
+
+        <EditText
+            android:id="@+id/entry"
+            android:layout_span="2" />
+        <TextView android:text="1234567899" />
+		<TextView android:text="hello my friend!" android:textColor="#0000ff" /> 
+		<TextView android:text="1234567899" />
+    </TableRow>
+
+    <TableRow>
+
+        <Button
+            android:id="@+id/cancel"
+            android:layout_column="2"
+            android:text="Cancel" />
+
+        <Button
+            android:id="@+id/ok"
+            android:text="Ok" />
+    </TableRow>
+
+</TableLayout>
