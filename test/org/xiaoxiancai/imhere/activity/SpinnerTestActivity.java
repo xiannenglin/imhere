@@ -35,7 +35,6 @@ public class SpinnerTestActivity extends Activity {
 		public MyOnItemSelectedListener(TextView textView) {
 			this.textView = textView;
 		}
-		@Override
 		public void onItemSelected(AdapterView<?> parent, View view,
 				int position, long id) {
 			String str = parent.getItemAtPosition(position).toString();
@@ -44,7 +43,6 @@ public class SpinnerTestActivity extends Activity {
 			textView.setText(str);
 		}
 
-		@Override
 		public void onNothingSelected(AdapterView<?> parent) {
 
 		}

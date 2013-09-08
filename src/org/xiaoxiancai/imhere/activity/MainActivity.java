@@ -98,31 +98,26 @@ public class MainActivity extends Activity {
 
 	private class MySearchListener implements MKSearchListener {
 
-		@Override
 		public void onGetAddrResult(MKAddrInfo arg0, int arg1) {
 			// TODO Auto-generated method stub
 
 		}
 
-		@Override
 		public void onGetBusDetailResult(MKBusLineResult arg0, int arg1) {
 			// TODO Auto-generated method stub
 
 		}
 
-		@Override
 		public void onGetDrivingRouteResult(MKDrivingRouteResult arg0, int arg1) {
 			// TODO Auto-generated method stub
 
 		}
 
-		@Override
 		public void onGetPoiDetailSearchResult(int arg0, int arg1) {
 			// TODO Auto-generated method stub
 
 		}
 
-		@Override
 		public void onGetPoiResult(MKPoiResult res, int type, int error) {
 			if (error == MKEvent.ERROR_RESULT_NOT_FOUND) {
 				Toast.makeText(MainActivity.this, "抱歉，未找到结果", Toast.LENGTH_LONG)
@@ -148,19 +143,16 @@ public class MainActivity extends Activity {
 			}
 		}
 
-		@Override
 		public void onGetSuggestionResult(MKSuggestionResult arg0, int arg1) {
 			// TODO Auto-generated method stub
 
 		}
 
-		@Override
 		public void onGetTransitRouteResult(MKTransitRouteResult arg0, int arg1) {
 			// TODO Auto-generated method stub
 
 		}
 
-		@Override
 		public void onGetWalkingRouteResult(MKWalkingRouteResult arg0, int arg1) {
 			// TODO Auto-generated method stub
 

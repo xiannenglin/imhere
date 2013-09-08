@@ -67,18 +67,15 @@ public class GridViewTestActivity extends Activity implements
 //		gridView.setOnItemSelectedListener(this);
 	}
 
-	@Override
 	public void onItemSelected(AdapterView<?> parent, View view, int position,
 			long id) {
 		textView.setText("Selected:" + items[position]);
 	}
 
-	@Override
 	public void onNothingSelected(AdapterView<?> parent) {
 		textView.setText("");
 	}
 
-	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
 		textView.setText("Clicked:" + items[position]);
@@ -150,22 +147,18 @@ public class GridViewTestActivity extends Activity implements
 			this.context = context;
 		}
 
-		@Override
 		public int getCount() {
 			return imageIds.length;
 		}
 
-		@Override
 		public Object getItem(int position) {
 			return null;
 		}
 
-		@Override
 		public long getItemId(int position) {
 			return 0;
 		}
 
-		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
 			ImageView imageView = null;
 			if (convertView == null) {

@@ -28,7 +28,6 @@ public class ToastTestActivity extends Activity implements OnClickListener  {
 
 	public void showToast() {
 		handler.post(new Runnable() {
-			@Override
 			public void run() {
 				Toast.makeText(getApplicationContext(), "我来自其他线程！",
 						Toast.LENGTH_SHORT).show();
@@ -36,7 +35,6 @@ public class ToastTestActivity extends Activity implements OnClickListener  {
 		});
 	}
 
-	@Override
 	public void onClick(View v) {
 		Toast toast = null;
 		switch (v.getId()) {
