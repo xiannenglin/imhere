@@ -4,10 +4,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <com.baidu.mapapi.map.MapView
-        android:id="@+id/mapView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clickable="true" />
+    <Button
+        android:id="@+id/btn_start"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Start" />
 
 </LinearLayout>
