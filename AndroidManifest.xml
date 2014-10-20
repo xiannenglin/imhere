@@ -63,7 +63,9 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-
+	<meta-data  
+	        android:name="com.baidu.lbsapi.API_KEY"  
+	        android:value="6xg6gg3kUWCdGEnjYrL7xXPu" />
         <!--
         <service
             android:name="com.baidu.location.f"

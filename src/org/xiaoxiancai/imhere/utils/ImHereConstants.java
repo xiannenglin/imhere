@@ -6,19 +6,9 @@ package org.xiaoxiancai.imhere.utils;
 public class ImHereConstants {
 
 	/**
-	 * 定位API key
-	 */
-	public static final String IMHERE_LOCATION_KEY = "B35415c80eecea8f5bbe9a51caa2d64f";
-
-	/**
-	 * 我的Key
-	 */
-	public static final String IMHERE_DEVELOP_KEY = "464FD558219E5DE2F8195BF28396562E1E6E1F01";
-
-	/**
 	 * key for mobile
 	 */
-	public static final String IMHERE_MOBILE_KEY = "seR7awaQuPeymMtBZ77aclRy";
+	public static final String IMHERE_MOBILE_KEY = "6xg6gg3kUWCdGEnjYrL7xXPu";
 
 	/**
 	 * key for server
@@ -28,7 +18,7 @@ public class ImHereConstants {
 	/**
 	 * 产品名称
 	 */
-	public static final String IMHERE_PROD_NAME = "I'mHere";
+	public static final String IMHERE_PROD_NAME = "ImHere";
 
 	/**
 	 * 默认缩放级别-17
