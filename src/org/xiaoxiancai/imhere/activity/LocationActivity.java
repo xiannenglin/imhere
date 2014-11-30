@@ -1,5 +1,9 @@
 package org.xiaoxiancai.imhere.activity;
 
+import org.xiaoxiancai.imhere.client.Client;
+import org.xiaoxiancai.imhere.client.ClientFactory;
+import org.xiaoxiancai.imhere.utils.ImHereConstants;
+
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
@@ -17,36 +21,43 @@ import com.baidu.mapapi.map.MyLocationConfiguration;
 import com.baidu.mapapi.map.MyLocationConfiguration.LocationMode;
 import com.baidu.mapapi.map.MyLocationData;
 
-import org.xiaoxiancai.imhere.utils.ImHereConstants;
-
 /**
  * 展示位置
  */
 public class LocationActivity extends Activity {
 
-	private LocationClient locationClient = null;
+	private LocationClient locationClient;
 
+	private Client imHereClient;
+	
+	private static final String serverHost = "localhost";
+	
+	private static final int serverPort = 18080;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		Context context = getApplicationContext();
-
 		SDKInitializer.initialize(context);
-
-		locationClient = initLocationClient(context);
 		setContentView(R.layout.activity_location);
 
 		MapView mapView = (MapView) findViewById(R.id.mapView);
 		BaiduMap baiduMap = mapView.getMap();
 		baiduMap.setMapType(BaiduMap.MAP_TYPE_NORMAL);
 		baiduMap.setMyLocationEnabled(true);
+		locationClient = initLocationClient(context, baiduMap);
+		imHereClient = ClientFactory.getDefaultClient(serverHost, serverPort);
 		startLocationClient(locationClient, baiduMap);
+		
 	}
 
 	/**
 	 * 初始化LocationClient
+	 * 
+	 * @param context
+	 * @return
 	 */
-	private LocationClient initLocationClient(Context context) {
+	private LocationClient initLocationClient(Context context, BaiduMap baiduMap) {
 		LocationClient locationClient = new LocationClient(context);
 		locationClient.setAK(ImHereConstants.IMHERE_MOBILE_KEY);
 		LocationClientOption option = new LocationClientOption();
@@ -57,6 +68,8 @@ public class LocationActivity extends Activity {
 		option.setScanSpan(10000);
 		option.setAddrType("all");
 		locationClient.setLocOption(option);
+		locationClient.registerLocationListener(new ImHereLocationListener(
+				baiduMap));
 		return locationClient;
 	}
 
@@ -64,12 +77,11 @@ public class LocationActivity extends Activity {
 	 * 开始定位
 	 * 
 	 * @param locationClient
+	 * @param baiduMap
 	 */
 	private void startLocationClient(LocationClient locationClient,
 			BaiduMap baiduMap) {
 		locationClient.start();
-		locationClient.registerLocationListener(new ImHereLocationListener(
-				baiduMap));
 		if (locationClient.isStarted()) {
 			locationClient.requestLocation();
 		}
@@ -86,11 +98,11 @@ public class LocationActivity extends Activity {
 			this.baiduMap = baiduMap;
 		}
 
+		@Override
 		public void onReceiveLocation(BDLocation location) {
 			if (location == null) {
 				return;
 			}
-			System.out.println(getLocationInfo(location));
 			MyLocationData locData = new MyLocationData.Builder()
 					.accuracy(location.getRadius())
 					// 此处设置开发者获取到的方向信息，顺时针0-360
@@ -98,7 +110,6 @@ public class LocationActivity extends Activity {
 					.latitude(location.getLatitude())
 					.longitude(location.getLongitude()).build();
 			baiduMap.setMyLocationData(locData);
-			System.out.println(baiduMap.isBuildingsEnabled());
 			BitmapDescriptor mCurrentMarker = BitmapDescriptorFactory
 					.fromResource(R.drawable.ic_launcher);
 			MyLocationConfiguration config = new MyLocationConfiguration(
@@ -106,27 +117,12 @@ public class LocationActivity extends Activity {
 			baiduMap.setMyLocationConfigeration(config);
 			// 当不需要定位图层时关闭定位图层
 			// baiduMap.setMyLocationEnabled(false);
+			
+			// 向服务器发送位置信息 TODO
+			// imHereClient.locate(arg0);
 		}
 
-		/**
-		 * 获取位置信息
-		 */
-		private String getLocationInfo(BDLocation location) {
-			StringBuilder buffer = new StringBuilder();
-			buffer.append("latitude = ").append(location.getLatitude())
-					.append("\n");
-			buffer.append("longitude = ").append(location.getLongitude())
-					.append("\n");
-			buffer.append("direct = ").append(location.getDerect())
-					.append("\n");
-			buffer.append("city = ").append(location.getCity()).append("\n");
-			buffer.append("province = ").append(location.getProvince())
-					.append("\n");
-			buffer.append("street = ").append(location.getStreet())
-					.append("\n");
-			return buffer.toString();
-		}
-
+		@Override
 		public void onReceivePoi(BDLocation poiLocation) {
 			if (poiLocation == null) {
 				return;
