@@ -4,15 +4,22 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
-     <com.baidu.mapapi.map.MapView
+    <TextView
+        android:id="@+id/locationText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <com.baidu.mapapi.map.MapView
         android:id="@+id/mapView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="true" />
 
-     <!-- 
+    <!--
      <Button android:id="@+id/btn_stop"
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
-         android:text="Stop"/> -->
+         android:text="Stop"/>
+    -->
+
 </LinearLayout>

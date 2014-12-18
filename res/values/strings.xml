@@ -5,6 +5,10 @@
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
     <string name="planet_prompt">Country</string>
+    
+    <string name="btn_start">Start</string>
+    <string name="btn_register">Register</string>
+    <string name="btn_login">Login</string>
 
     <string-array name="countries_array">
         <item>China</item>
