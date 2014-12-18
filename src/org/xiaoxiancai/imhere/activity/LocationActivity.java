@@ -2,11 +2,15 @@ package org.xiaoxiancai.imhere.activity;
 
 import org.xiaoxiancai.imhere.client.Client;
 import org.xiaoxiancai.imhere.client.ClientFactory;
+import org.xiaoxiancai.imhere.common.protos.business.LocateRequestProtos.LocateRequest;
+import org.xiaoxiancai.imhere.common.protos.business.LocateResponseProtos.LocateResponse;
+import org.xiaoxiancai.imhere.common.protos.business.LocationProtos.Location;
 import org.xiaoxiancai.imhere.utils.ImHereConstants;
 
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
@@ -28,27 +32,34 @@ public class LocationActivity extends Activity {
 
 	private LocationClient locationClient;
 
+	private ClientFactory clientFactory;
+
 	private Client imHereClient;
-	
-	private static final String serverHost = "localhost";
-	
+
+	private static final String serverHost = "120.24.222.133";
+
 	private static final int serverPort = 18080;
-	
+
+	private int userId;
+
+	private TextView locationText;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		clientFactory = ClientFactory.getInstance();
 		super.onCreate(savedInstanceState);
 		Context context = getApplicationContext();
 		SDKInitializer.initialize(context);
 		setContentView(R.layout.activity_location);
 
 		MapView mapView = (MapView) findViewById(R.id.mapView);
+		locationText = (TextView) findViewById(R.id.locationText);
 		BaiduMap baiduMap = mapView.getMap();
 		baiduMap.setMapType(BaiduMap.MAP_TYPE_NORMAL);
 		baiduMap.setMyLocationEnabled(true);
 		locationClient = initLocationClient(context, baiduMap);
-		imHereClient = ClientFactory.getDefaultClient(serverHost, serverPort);
+		imHereClient = clientFactory.getDefaultClient(serverHost, serverPort);
 		startLocationClient(locationClient, baiduMap);
-		
 	}
 
 	/**
@@ -117,9 +128,34 @@ public class LocationActivity extends Activity {
 			baiduMap.setMyLocationConfigeration(config);
 			// 当不需要定位图层时关闭定位图层
 			// baiduMap.setMyLocationEnabled(false);
-			
+
 			// 向服务器发送位置信息 TODO
-			// imHereClient.locate(arg0);
+			try {
+				String msg = location.getLocType() + ","
+						+ location.getLatitude() + ","
+						+ location.getLongitude();
+//				locationText.setText(msg);
+				LocateRequest locateRequest = createLocateRequest(location);
+//				locationText.setText(locateRequest.toString());
+				LocateResponse response = imHereClient.locate(locateRequest);
+				locationText.setText("response = " + response.toString());
+			} catch (Exception e) {
+				e.printStackTrace();
+				locationText.setText(imHereClient + ";" + e.getMessage() + ";" + e.getCause());
+			}
+		}
+
+		private LocateRequest createLocateRequest(BDLocation location) {
+			Location.Builder protoLocationBuilder = Location.newBuilder();
+			// TODO
+			protoLocationBuilder.setUserId(1);
+			protoLocationBuilder.setLocType(location.getLocType());
+			protoLocationBuilder.setLatitude(location.getLatitude());
+			protoLocationBuilder.setLongitude(location.getLongitude());
+			protoLocationBuilder.setSpeed(location.getSpeed());
+			LocateRequest.Builder builder = LocateRequest.newBuilder();
+			builder.setCurrentLocation(protoLocationBuilder.build());
+			return builder.build();
 		}
 
 		@Override

@@ -13,6 +13,10 @@ import android.widget.Button;
  */
 public class MainActivity extends Activity {
 
+	private Button registerButton;
+	
+	private Button loginButton;
+	
 	private Button startButton;
 
 	@Override
@@ -34,6 +38,7 @@ public class MainActivity extends Activity {
 			this.context = context;
 		}
 
+		@Override
 		public void onClick(View v) {
 			Intent intent = new Intent(context, LocationActivity.class);
 			startActivity(intent);
